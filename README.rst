@@ -12,6 +12,35 @@ parsing, converted from JSON/YAML (or something else) to Python data-types.
 .. image:: https://img.shields.io/codecov/c/github/keleshev/schema.svg
     :target: http://codecov.io/github/keleshev/schema
 
+
+Async Example
+----------------------------------------------------------------------------
+Here is a quick example to get a feeling of **schema_async**, validating a list of
+entries with personal information:
+
+.. code:: python
+
+    >>> from schema_async import Schema, And, Use, Optional
+    >>> import asyncio
+
+    >>> schema = Schema([{'name': And(str, len),
+    ...                   'age':  And(Use(int), lambda n: 18 <= n <= 99),
+    ...                   Optional('gender'): And(str, Use(str.lower),
+    ...                                           lambda s: s in ('squid', 'kid'))}])
+
+    >>> data = [{'name': 'Sue', 'age': '28', 'gender': 'Squid'},
+    ...         {'name': 'Sam', 'age': '42'},
+    ...         {'name': 'Sacha', 'age': '20', 'gender': 'KID'}]
+
+    >>> loop = asyncio.get_running_loop()
+    >>> validated = loop.run_until_complete(await schema.validate(data))
+
+    >>> assert validated == [{'name': 'Sue', 'age': 28, 'gender': 'squid'},
+    ...                      {'name': 'Sam', 'age': 42},
+    ...                      {'name': 'Sacha', 'age' : 20, 'gender': 'kid'}]
+
+
+
 Example
 ----------------------------------------------------------------------------
 

@@ -558,7 +558,7 @@ def test_optional_key_convert_failed_randomly_while_with_another_optional_object
     fmt = '%Y-%m-%d %H:%M:%S'
     _datetime_validator = Or(None, Use(lambda i: datetime.datetime.strptime(i, fmt)))
     # FIXME given tests enough
-    for i in range(1024):
+    for _ in range(1024):
         s = Schema({
             Optional('created_at'): _datetime_validator,
             Optional('updated_at'): _datetime_validator,
