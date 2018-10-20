@@ -49,7 +49,9 @@ async def test_async():
     return str(data)
   
   assert await Schema(Use(change)).validate(1) == '1'
+  assert await Schema(Use(change)).is_valid(1) == True
   assert await Schema(Use(str)).validate(1) == '1'
+  assert await Schema(Use(str)).is_valid(1) == True
 
 
 @pytest.mark.asyncio
@@ -102,6 +104,8 @@ async def test_and():
   assert await And(Use(int), lambda n: 0 < n < 5).validate(3.33) == 3
   with SE:
     await And(Use(int), lambda n: 0 < n < 5).validate('3.33')
+  with raises(TypeError):
+    await And(str, len, hello='a').validate('hello')
 
 
 @pytest.mark.asyncio
@@ -176,6 +180,8 @@ async def test_regex():
     await Regex([]).validate('bar')
   with raises(TypeError):
     await Regex(None).validate('bar')
+  
+  await Regex(r'bar', flags=1).validate('bar')
 
 
 @pytest.mark.asyncio
@@ -442,6 +448,8 @@ async def test_use_error_handling():
   except SchemaError as e:
     assert e.autos == [None, 'first auto']
     assert e.errors == ['second error', 'first error']
+  with raises(TypeError):
+    await Use(1).validate(1)
 
 
 @pytest.mark.asyncio

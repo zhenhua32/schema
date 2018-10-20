@@ -86,6 +86,8 @@ self-contained.
 
 - **schema** is tested with Python 2.6, 2.7, 3.2, 3.3, 3.4, 3.5, 3.6 and PyPy.
 - **schema** follows `semantic versioning <http://semver.org>`_.
+- **schema_async** is tested with Python 3.6, 3.7.
+- **schema_async** follows `semantic versioning <http://semver.org>`_.
 
 How ``Schema`` validates data
 -------------------------------------------------------------------------------
