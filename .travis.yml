@@ -1,13 +1,9 @@
-
 language: python
 
-addons:
-  apt:
-    sources:
-      - deadsnakes
-    packages:
-      - python3.6
-      - python3.7
+python:
+  - "3.6"
+  - "3.7-dev"
+
 
 script:
 - pytest
