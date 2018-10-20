@@ -8,7 +8,7 @@ python:
 script:
 - pytest
 
-install: pip install codecov
+install: pip install codecov pytest_asyncio
 
 after_success:
   - codecov
