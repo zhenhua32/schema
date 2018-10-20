@@ -6,8 +6,8 @@ obtained from config-files, forms, external services or command-line
 parsing, converted from JSON/YAML (or something else) to Python data-types.
 
 
-.. image:: https://secure.travis-ci.org/keleshev/schema.png?branch=master
-    :target: https://travis-ci.org/keleshev/schema
+.. image:: https://travis-ci.org/zhenhua32/schema.svg?branch=master
+    :target: https://travis-ci.org/zhenhua32/schema
 
 .. image:: https://img.shields.io/codecov/c/github/keleshev/schema.svg
     :target: http://codecov.io/github/keleshev/schema

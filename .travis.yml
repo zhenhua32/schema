@@ -1,18 +1,23 @@
-# sudo: required
-
-# services:
-#   - docker
 
 language: python
 
-python:
-- "3.6"
-- "3.7-dev"
+addons:
+  apt:
+    sources:
+      - deadsnakes
+    packages:
+      - python3.6
+      - python3.7
 
 script:
 - pytest
 
 install: pip install codecov pytest_asyncio
 
+env:
+  - CODECOV_TOKEN="9f861ef0-f2c7-40fc-bb72-662d403d19a8"
+
 after_success:
   - codecov
+
+
