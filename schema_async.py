@@ -7,8 +7,8 @@ import asyncio
 
 __version__ = '0.6.8'
 __all__ = [
-    'Schema', 'And', 'Or', 'Regex', 'Optional', 'Use', 'Forbidden', 'Const', 'SchemaError', 'SchemaWrongKeyError',
-    'SchemaMissingKeyError', 'SchemaForbiddenKeyError', 'SchemaUnexpectedTypeError'
+  'Schema', 'And', 'Or', 'Regex', 'Optional', 'Use', 'Forbidden', 'Const', 'SchemaError', 'SchemaWrongKeyError',
+  'SchemaMissingKeyError', 'SchemaForbiddenKeyError', 'SchemaUnexpectedTypeError'
 ]
 
 
@@ -23,14 +23,14 @@ class SchemaError(Exception):
   @property
   def code(self):
     """
-        Removes duplicates values in auto and error list.
-        parameters.
-        """
+    Removes duplicates values in auto and error list.
+    parameters.
+    """
 
     def uniq(seq):
       """
-            Utility function that removes duplicate.
-            """
+      Utility function that removes duplicate.
+      """
       seen = set()
       seen_add = seen.add
       # This way removes duplicates while preserving the order.
@@ -124,15 +124,15 @@ class Regex(object):
     """
   # Map all flags bits to a more readable description
   NAMES = [
-      're.ASCII', 're.DEBUG', 're.VERBOSE', 're.UNICODE', 're.DOTALL', 're.MULTILINE', 're.LOCALE', 're.IGNORECASE',
-      're.TEMPLATE'
+    're.ASCII', 're.DEBUG', 're.VERBOSE', 're.UNICODE', 're.DOTALL', 're.MULTILINE', 're.LOCALE', 're.IGNORECASE',
+    're.TEMPLATE'
   ]
 
   def __init__(self, pattern_str, flags=0, error=None):
     self._pattern_str = pattern_str
     flags_list = [
-        Regex.NAMES[i] for i, f in  # Name for each bit
-        enumerate('{0:09b}'.format(flags)) if f != '0'
+      Regex.NAMES[i] for i, f in  # Name for each bit
+      enumerate('{0:09b}'.format(flags)) if f != '0'
     ]
 
     if flags_list:
@@ -254,7 +254,7 @@ class Schema(object):
       data = await Schema(type(s), error=e).validate(data)
       o = Or(*s, error=e, schema=Schema, ignore_extra_keys=i)
       # type() 返回的是 class
-      return type(data)([await o.validate(d) for d in data])
+      return type(data)([ await o.validate(d) for d in data])
     if flavor == DICT:
       data = await Schema(dict, error=e).validate(data)
       new = type(data)()  # new - is a dict of the validated values

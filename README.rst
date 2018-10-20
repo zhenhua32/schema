@@ -9,9 +9,8 @@ parsing, converted from JSON/YAML (or something else) to Python data-types.
 .. image:: https://travis-ci.org/zhenhua32/schema.svg?branch=master
     :target: https://travis-ci.org/zhenhua32/schema
 
-.. image:: https://img.shields.io/codecov/c/github/keleshev/schema.svg
-    :target: http://codecov.io/github/keleshev/schema
-
+.. image:: https://codecov.io/gh/zhenhua32/schema/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/zhenhua32/schema
 
 Async Example
 ----------------------------------------------------------------------------
@@ -32,7 +31,7 @@ entries with personal information:
     ...         {'name': 'Sam', 'age': '42'},
     ...         {'name': 'Sacha', 'age': '20', 'gender': 'KID'}]
 
-    >>> loop = asyncio.get_running_loop()
+    >>> loop = asyncio.get_event_loop()
     >>> validated = loop.run_until_complete(schema.validate(data))
 
     >>> assert validated == [{'name': 'Sue', 'age': 28, 'gender': 'squid'},

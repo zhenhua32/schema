@@ -4,9 +4,8 @@ python:
   - "3.6"
   - "3.7-dev"
 
-
 script:
-- pytest --cov=./
+- pytest --cov schema --cov schema_async
 
 install: pip install codecov pytest-asyncio pytest-cov
 
