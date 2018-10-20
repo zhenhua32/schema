@@ -6,9 +6,9 @@ python:
 
 
 script:
-- pytest
+- pytest --cov=./
 
-install: pip install codecov pytest_asyncio
+install: pip install codecov pytest-asyncio pytest-cov
 
 env:
   - CODECOV_TOKEN="9f861ef0-f2c7-40fc-bb72-662d403d19a8"
