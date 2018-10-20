@@ -51,7 +51,7 @@ async def test_async():
   assert await Schema(Use(change)).validate(1) == '1'
   assert await Schema(Use(change)).is_valid(1) == True
   assert await Schema(Use(str)).validate(1) == '1'
-  assert await Schema(Use(str)).is_valid(1) == True
+  assert await Schema(str).is_valid(1) == False
 
 
 @pytest.mark.asyncio
