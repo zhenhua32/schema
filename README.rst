@@ -33,7 +33,7 @@ entries with personal information:
     ...         {'name': 'Sacha', 'age': '20', 'gender': 'KID'}]
 
     >>> loop = asyncio.get_running_loop()
-    >>> validated = loop.run_until_complete(await schema.validate(data))
+    >>> validated = loop.run_until_complete(schema.validate(data))
 
     >>> assert validated == [{'name': 'Sue', 'age': 28, 'gender': 'squid'},
     ...                      {'name': 'Sam', 'age': 42},
